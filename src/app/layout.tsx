@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { AppShell } from "@/components/app-shell";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -13,9 +14,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "FieldDemo Pulse | GreenLife Crop Protection",
+  title: "FieldDemo Pulse | GreenLife",
   description:
-    "Agentic field-force intelligence plugin for agribusinesses with offline-first reporting and ERP forecasting.",
+    "Offline-first field reporting, coupon attribution, and demand intelligence for agribusiness teams.",
+  manifest: "/manifest.webmanifest",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
@@ -24,7 +26,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full bg-[var(--background)] text-[var(--foreground)]">{children}</body>
+      <body className="min-h-full bg-[var(--background)] text-[var(--foreground)]">
+        <AppShell>{children}</AppShell>
+      </body>
     </html>
   );
 }

@@ -1,14 +1,14 @@
 # FieldDemo Pulse
 
-A lightweight agribusiness field-force intelligence MVP inspired by the GreenLife Crop Protection proposal in the attached PDF.
+Mobile-first field operations prototype for the GreenLife Crop Protection field-demo workflow.
 
-## What this project includes
+## Workspaces
 
-- Marketing landing page for the product concept
-- Pilot dashboard for field activity, demand signals, and stock pressure
-- Offline-first PWA manifest metadata
-- Mock API endpoint for field demo telemetry
-- Next.js 16 app-router project with Tailwind styling
+- `/promoter` — voice and camera capture, geotag/time stamps, offline IndexedDB queue, manual mock sync, and SMS coupon generation.
+- `/stockist` — sample coupon redemption, localized demand alerts, inventory projections, and an ERP restock approval mock.
+- `/dashboard` — dark executive telemetry view with ROI metrics, field verification, demand-risk heatmap, and connector health.
+
+The root page links to each workspace. The persistent status bar shows connectivity and pending field reports.
 
 ## Run locally
 
@@ -17,17 +17,21 @@ npm install
 npm run dev
 ```
 
-Then open http://localhost:3000 and http://localhost:3000/dashboard.
+Open http://localhost:3000. Voice capture requires a secure context (HTTPS or localhost) and microphone permission. Camera capture depends on browser/device support.
 
-## Production build
+## Offline behavior
+
+- Field reports and attached media are stored in IndexedDB until mock API sync succeeds.
+- `public/sw.js` caches the application routes and same-origin assets for repeat visits while offline.
+- The sync endpoint returns a mock acknowledgement; it does not persist data to a backend.
+
+## Prototype limitations
+
+All dashboard figures, GPS coordinates, promoter IDs, coupon validation, attribution, and ERP actions are sample/mock data. The coupon screen does not send SMS, and the stockist approval only simulates an ERP outbox. No real blockchain ledger, transcription service, or enterprise connector is configured.
+
+## Production checks
 
 ```bash
+npm run lint
 npm run build
 ```
-
-## Project structure
-
-- `src/app/page.tsx` — public landing page
-- `src/app/dashboard/page.tsx` — KPI dashboard
-- `src/app/api/field-demo/route.ts` — field telemetry mock endpoint
-- `src/app/manifest.ts` — PWA manifest definition

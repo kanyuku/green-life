@@ -1,239 +1,110 @@
 import Link from "next/link";
 
-const capabilityCards = [
+const workspaces = [
   {
-    title: "Voice & field capture",
-    description:
-      "Offline-first mobile reporting converts Swahili and English voice notes into structured JSON field telemetry.",
-    accent: "from-emerald-500 to-green-600",
+    number: "01",
+    href: "/promoter",
+    title: "Field promoter",
+    description: "Capture voice reports, geotag demo plots, and generate farmer coupons—even without a signal.",
+    label: "Mobile field app",
+    icon: "↗",
+    tone: "border-emerald-200 bg-emerald-50 text-emerald-900",
   },
   {
-    title: "Agentic demand dispatcher",
-    description:
-      "AI monitors live demo traction and issues ERP-approved purchase orders before stockouts hit nearby agrovets.",
-    accent: "from-lime-500 to-emerald-600",
+    number: "02",
+    href: "/stockist",
+    title: "Agrovet stockist",
+    description: "Redeem referrals, monitor local demand, and review AI-drafted replenishment orders.",
+    label: "Inventory & sales",
+    icon: "▤",
+    tone: "border-amber-200 bg-amber-50 text-amber-950",
   },
   {
-    title: "Attribution & ledger",
-    description:
-      "Cryptographic referral tokens create verifiable chain-of-custody between a demo, farmer purchase, and promoter reward.",
-    accent: "from-amber-400 to-orange-500",
+    number: "03",
+    href: "/dashboard",
+    title: "Enterprise executive",
+    description: "Measure field ROI, review verification signals, and monitor ERP connectivity across regions.",
+    label: "Operations intelligence",
+    icon: "◫",
+    tone: "border-indigo-200 bg-indigo-50 text-indigo-950",
   },
-  {
-    title: "ERP connector layer",
-    description:
-      "Standardized webhooks bridge SAP, Dynamics, Oracle, or bespoke enterprise backends with rural field events.",
-    accent: "from-teal-500 to-cyan-600",
-  },
-];
-
-const phasePlan = [
-  {
-    phase: "Phase 1",
-    title: "Core API adapter & data schema",
-    text: "Event-driven plugin, PostgreSQL/Redis architecture, ERP webhook drivers, and telemetry schemas.",
-  },
-  {
-    phase: "Phase 2",
-    title: "Offline PWA & voice AI engine",
-    text: "IndexedDB capture, Web Audio, low-bandwidth sync, and multilingual transcription pipeline.",
-  },
-  {
-    phase: "Phase 3",
-    title: "Agentic demand & smart contracts",
-    text: "Referral tokens, localized demand modeling, and automated restocking alerts with vendor approval flows.",
-  },
-  {
-    phase: "Phase 4",
-    title: "Field pilot & enterprise hardening",
-    text: "Real-world validation, Docker/Kubernetes packaging, security hardening, and open-source documentation.",
-  },
-];
-
-const kpis = [
-  { label: "Active promoters", value: "146" },
-  { label: "Demos this week", value: "28" },
-  { label: "Estimated farmers reached", value: "3.4K" },
-  { label: "Forecasted restock value", value: "$445K" },
-];
-
-const flowSteps = [
-  "Capture a 30-second voice update and geotagged plot photo offline.",
-  "Sync using low-bandwidth connectivity and verify GPS and transcript integrity.",
-  "Issue digital coupons and tie farmer actions to the original promoter ID.",
-  "Trigger ERP reorder workflows when demand spikes and stock levels dip.",
 ];
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[radial-gradient(circle_at_top,_rgba(127,255,182,0.18),_transparent_42%),linear-gradient(180deg,#f4fbf6_0%,#edf7ef_100%)] text-slate-800">
-      <div className="mx-auto max-w-7xl px-6 py-8 lg:px-8">
-        <header className="flex items-center justify-between rounded-full border border-emerald-200/80 bg-white/75 px-5 py-3 shadow-sm backdrop-blur-sm">
-          <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-emerald-500 to-lime-500 text-lg font-bold text-white shadow-md shadow-emerald-200">
-              F
-            </div>
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-emerald-700">GreenLife</p>
-              <h1 className="text-sm font-semibold text-slate-800">FieldDemo Pulse</h1>
-            </div>
+    <main className="mx-auto max-w-7xl px-4 pb-24 pt-9 sm:px-6 sm:pt-14">
+      <section className="grid gap-8 rounded-[2rem] bg-[#10271f] p-6 text-white sm:p-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-end lg:p-14">
+        <div>
+          <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1.5 text-xs font-semibold text-emerald-100">
+            <span className="h-2 w-2 rounded-full bg-lime-400" />
+            FIELD INTELLIGENCE · EAST AFRICA
+          </span>
+          <h1 className="mt-6 max-w-3xl text-4xl font-black leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl">
+            From the demo plot to the next stocked shelf.
+          </h1>
+          <p className="mt-5 max-w-2xl text-base leading-7 text-slate-300 sm:text-lg">
+            One connected workflow for rural promoters, local agrovets, and enterprise teams. Keep field work moving when the network doesn’t.
+          </p>
+        </div>
+        <div className="grid grid-cols-2 gap-3 text-sm">
+          <div className="rounded-2xl border border-white/10 bg-white/[0.06] p-4">
+            <p className="text-2xl font-black">Offline-first</p>
+            <p className="mt-1 text-slate-300">Reports saved on device</p>
           </div>
+          <div className="rounded-2xl border border-white/10 bg-white/[0.06] p-4">
+            <p className="text-2xl font-black">3 workspaces</p>
+            <p className="mt-1 text-slate-300">One demo-to-sale journey</p>
+          </div>
+        </div>
+      </section>
 
-          <nav className="hidden items-center gap-6 text-sm font-medium text-slate-600 md:flex">
-            <a href="#capabilities" className="transition hover:text-emerald-700">Capabilities</a>
-            <a href="#workflow" className="transition hover:text-emerald-700">Workflow</a>
-            <a href="#roadmap" className="transition hover:text-emerald-700">Roadmap</a>
-            <Link href="/dashboard" className="rounded-full border border-emerald-700 px-4 py-2 text-emerald-700 transition hover:bg-emerald-700 hover:text-white">
-              Pilot dashboard
-            </Link>
-          </nav>
-        </header>
-
-        <section className="grid items-center gap-10 pb-18 pt-16 lg:grid-cols-[1.2fr_0.8fr] lg:pt-20">
+      <section className="mt-10">
+        <div className="mb-5 flex items-end justify-between gap-4">
           <div>
-            <span className="inline-flex items-center rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-emerald-700">
-              Agentic & on-chain field-force intelligence
-            </span>
-            <h2 className="mt-6 max-w-2xl text-4xl font-black tracking-tight text-slate-900 sm:text-5xl">
-              Turning rural demo plots into measurable sales momentum.
-            </h2>
-            <p className="mt-5 max-w-xl text-lg leading-8 text-slate-600">
-              FieldDemo Pulse closes the data gap between village-level promoter activity and corporate ERP decisions, so agribusinesses can track demos, convert interest into sales, and restock before demand spikes.
-            </p>
-
-            <div className="mt-8 flex flex-wrap gap-4">
-              <Link
-                href="/dashboard"
-                className="rounded-full bg-emerald-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-emerald-200 transition hover:bg-emerald-700"
-              >
-                View pilot dashboard
-              </Link>
-              <a
-                href="#capabilities"
-                className="rounded-full border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-700 transition hover:border-emerald-400 hover:text-emerald-700"
-              >
-                Explore architecture
-              </a>
-            </div>
-
-            <div className="mt-10 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-              {kpis.map((item) => (
-                <div key={item.label} className="rounded-2xl border border-emerald-100 bg-white/80 p-4 shadow-sm">
-                  <p className="text-2xl font-black text-slate-900">{item.value}</p>
-                  <p className="mt-1 text-sm text-slate-600">{item.label}</p>
-                </div>
-              ))}
-            </div>
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-emerald-800">Choose a workspace</p>
+            <h2 className="mt-2 text-2xl font-black tracking-tight sm:text-3xl">What would you like to do?</h2>
           </div>
-
-          <div className="relative">
-            <div className="rounded-[32px] border border-emerald-200/80 bg-white/80 p-5 shadow-[0_30px_80px_rgba(6,95,70,0.12)] backdrop-blur-sm">
-              <div className="rounded-[24px] bg-gradient-to-br from-emerald-50 via-lime-50 to-white p-5">
-                <div className="mb-4 flex items-center justify-between">
-                  <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-700">Live field system</p>
-                    <h3 className="mt-1 text-xl font-bold text-slate-900">Demo-to-sale intelligence</h3>
-                  </div>
-                  <span className="rounded-full bg-emerald-100 px-2.5 py-1 text-xs font-semibold text-emerald-700">Online</span>
-                </div>
-
-                <div className="space-y-4">
-                  <div className="rounded-2xl bg-slate-900 p-4 text-white">
-                    <div className="flex items-center justify-between text-xs uppercase tracking-[0.2em] text-emerald-200">
-                      <span>Voice capture</span>
-                      <span>Synced</span>
-                    </div>
-                    <p className="mt-3 text-lg font-semibold">“Mkulima mwenzetu ... demand for maize treatment is rising.”</p>
-                  </div>
-
-                  <div className="grid gap-3 sm:grid-cols-2">
-                    <div className="rounded-2xl border border-slate-200 bg-white p-3">
-                      <p className="text-xs uppercase tracking-[0.18em] text-slate-500">Inventory signal</p>
-                      <p className="mt-2 text-2xl font-black text-slate-900">+34%</p>
-                      <p className="mt-1 text-sm text-slate-600">Projected demand surge</p>
-                    </div>
-                    <div className="rounded-2xl border border-slate-200 bg-white p-3">
-                      <p className="text-xs uppercase tracking-[0.18em] text-slate-500">Referral trace</p>
-                      <p className="mt-2 text-2xl font-black text-slate-900">12</p>
-                      <p className="mt-1 text-sm text-slate-600">Converted farmers</p>
-                    </div>
-                  </div>
-
-                  <div className="rounded-2xl border border-dashed border-emerald-200 bg-emerald-50 p-4">
-                    <div className="flex items-center justify-between text-sm font-semibold text-slate-700">
-                      <span>Agrovet restock readiness</span>
-                      <span>92%</span>
-                    </div>
-                    <div className="mt-3 h-2.5 w-full overflow-hidden rounded-full bg-emerald-100">
-                      <div className="h-full w-[92%] rounded-full bg-gradient-to-r from-emerald-500 to-lime-500" />
-                    </div>
-                  </div>
-                </div>
+          <span className="hidden text-sm font-medium text-slate-500 sm:block">Kenya pilot · Demo data</span>
+        </div>
+        <div className="grid gap-4 lg:grid-cols-3">
+          {workspaces.map((workspace) => (
+            <Link
+              key={workspace.href}
+              href={workspace.href}
+              className="group rounded-[1.6rem] border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:border-emerald-300 hover:shadow-lg sm:p-6"
+            >
+              <div className="flex items-start justify-between">
+                <span className={`grid h-12 w-12 place-items-center rounded-2xl border text-xl font-black ${workspace.tone}`}>
+                  {workspace.icon}
+                </span>
+                <span className="font-mono text-xs font-bold text-slate-400">{workspace.number}</span>
               </div>
+              <p className="mt-6 text-[10px] font-bold uppercase tracking-[0.17em] text-slate-500">{workspace.label}</p>
+              <h3 className="mt-2 text-xl font-extrabold">{workspace.title}</h3>
+              <p className="mt-2 min-h-[4.5rem] text-sm leading-6 text-slate-600">{workspace.description}</p>
+              <span className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-emerald-800">
+                Open workspace <span className="transition group-hover:translate-x-1">→</span>
+              </span>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <section className="mt-8 grid gap-4 rounded-3xl border border-slate-200 bg-white p-5 sm:grid-cols-3 sm:p-6">
+        {[
+          ["01", "Capture", "Voice, photo, and attendance from the field"],
+          ["02", "Attribute", "Connect farmer coupons to a verified demo"],
+          ["03", "Restock", "Turn demand signals into an ERP-ready draft"],
+        ].map(([step, title, description]) => (
+          <div key={step} className="flex gap-3">
+            <span className="font-mono text-xs font-bold text-emerald-700">{step}</span>
+            <div>
+              <p className="text-sm font-bold">{title}</p>
+              <p className="mt-1 text-sm leading-5 text-slate-600">{description}</p>
             </div>
           </div>
-        </section>
-
-        <section id="capabilities" className="pt-20">
-          <div className="max-w-2xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-emerald-700">System architecture</p>
-            <h3 className="mt-3 text-3xl font-black tracking-tight text-slate-900">Four integrated engine layers for modern field operations.</h3>
-          </div>
-
-          <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-            {capabilityCards.map((card) => (
-              <article key={card.title} className="rounded-[28px] border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-md">
-                <div className={`mb-4 h-12 w-12 rounded-2xl bg-gradient-to-br ${card.accent}`} />
-                <h4 className="text-xl font-bold text-slate-900">{card.title}</h4>
-                <p className="mt-3 text-sm leading-7 text-slate-600">{card.description}</p>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section id="workflow" className="pt-20">
-          <div className="flex items-end justify-between gap-4">
-            <div className="max-w-xl">
-              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-emerald-700">Operational flow</p>
-              <h3 className="mt-3 text-3xl font-black tracking-tight text-slate-900">From village demo to executive ERP insight.</h3>
-            </div>
-            <div className="hidden rounded-full border border-emerald-200 bg-emerald-50 px-4 py-2 text-sm font-medium text-emerald-700 md:block">
-              Data lifecycle in 4 steps
-            </div>
-          </div>
-
-          <div className="mt-10 grid gap-5 lg:grid-cols-4">
-            {flowSteps.map((step, index) => (
-              <div key={step} className="rounded-[24px] border border-slate-200 bg-white p-5 shadow-sm">
-                <div className="mb-5 flex h-10 w-10 items-center justify-center rounded-full bg-emerald-100 text-sm font-black text-emerald-700">
-                  0{index + 1}
-                </div>
-                <p className="text-base leading-7 text-slate-700">{step}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section id="roadmap" className="pt-20 pb-10">
-          <div className="max-w-2xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-emerald-700">Engineering roadmap</p>
-            <h3 className="mt-3 text-3xl font-black tracking-tight text-slate-900">A 16-week path to enterprise-ready MVP delivery.</h3>
-          </div>
-
-          <div className="mt-10 grid gap-5 lg:grid-cols-2">
-            {phasePlan.map((phase) => (
-              <div key={phase.phase} className="rounded-[28px] border border-slate-200 bg-white p-6 shadow-sm">
-                <div className="flex items-center justify-between">
-                  <span className="text-xs font-semibold uppercase tracking-[0.22em] text-emerald-700">{phase.phase}</span>
-                  <span className="h-2.5 w-2.5 rounded-full bg-emerald-500" />
-                </div>
-                <h4 className="mt-4 text-xl font-bold text-slate-900">{phase.title}</h4>
-                <p className="mt-3 text-base leading-7 text-slate-600">{phase.text}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-      </div>
+        ))}
+      </section>
     </main>
   );
 }

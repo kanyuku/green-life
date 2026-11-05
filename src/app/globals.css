@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f4fbf6;
-  --foreground: #12211b;
+  --background: #f6f7f2;
+  --foreground: #111827;
 }
 
 @theme inline {
@@ -20,6 +20,7 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
 * {
@@ -28,4 +29,15 @@ body {
 
 a {
   text-decoration: none;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+::selection {
+  background: #a7f3d0;
+  color: #10271f;
 }

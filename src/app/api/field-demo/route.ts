@@ -38,3 +38,62 @@ export async function GET() {
     ],
   });
 }
+
+type SyncReport = {
+  id: string;
+  kind: "voice" | "photo";
+  createdAt: string;
+  village: string;
+  latitude: number;
+  longitude: number;
+};
+
+function isSyncReport(value: unknown): value is SyncReport {
+  if (typeof value !== "object" || value === null) return false;
+  const report = value as Record<string, unknown>;
+  return (
+    typeof report.id === "string" &&
+    report.id.length > 0 &&
+    (report.kind === "voice" || report.kind === "photo") &&
+    typeof report.createdAt === "string" &&
+    !Number.isNaN(Date.parse(report.createdAt)) &&
+    typeof report.village === "string" &&
+    report.village.length <= 120 &&
+    typeof report.latitude === "number" &&
+    Number.isFinite(report.latitude) &&
+    report.latitude >= -90 &&
+    report.latitude <= 90 &&
+    typeof report.longitude === "number" &&
+    Number.isFinite(report.longitude) &&
+    report.longitude >= -180 &&
+    report.longitude <= 180
+  );
+}
+
+export async function POST(request: Request) {
+  let payload: unknown;
+  try {
+    payload = await request.json();
+  } catch (error) {
+    if (error instanceof SyntaxError) {
+      return Response.json({ error: "Request body must be valid JSON." }, { status: 400 });
+    }
+    throw error;
+  }
+
+  if (typeof payload !== "object" || payload === null || !("reports" in payload)) {
+    return Response.json({ error: "A reports array is required." }, { status: 400 });
+  }
+
+  const reports = (payload as { reports: unknown }).reports;
+  if (!Array.isArray(reports) || reports.length > 100 || !reports.every(isSyncReport)) {
+    return Response.json({ error: "Reports must contain up to 100 valid field entries." }, { status: 400 });
+  }
+
+  return Response.json({
+    acceptedIds: reports.map((report) => report.id),
+    acceptedCount: reports.length,
+    syncedAt: new Date().toISOString(),
+    mode: "mock",
+  });
+}
